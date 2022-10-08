@@ -29,6 +29,26 @@ public class PersonDAO {
     }
 
     public Person show(int id) throws PersonNotFoundException {
-        return people.stream().filter(p -> p.id() == id).findAny().orElseThrow(() -> new PersonNotFoundException(id));
+        return people.stream().filter(p -> p.getId() == id).findAny().orElseThrow(() -> new PersonNotFoundException(id));
+    }
+
+    public void save(Person person) {
+        person.setId(++PEOPLE_COUNT);
+        people.add(person);
+    }
+
+    public void update(int id, Person person) {
+        try {
+            Person personToBeUpdated = show(id);
+            personToBeUpdated.setName(person.getName());
+        } catch (PersonNotFoundException e) {
+            e.getMessage();
+        }
+
+
+    }
+
+    public void delete(int id) {
+        people.removeIf(p -> p.getId() == id);
     }
 }
