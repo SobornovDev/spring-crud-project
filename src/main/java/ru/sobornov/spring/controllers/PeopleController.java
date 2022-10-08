@@ -68,6 +68,7 @@ public class PeopleController  {
     public String update(Model model, HttpServletRequest request, @PathVariable("id") int id) {
         String name = request.getParameter("name");
         Person person = new Person(id, name);
+        model.addAttribute("person", person);
         personDAO.update(id, person);
         return "redirect:/people";
     }
