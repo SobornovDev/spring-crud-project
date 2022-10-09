@@ -42,13 +42,15 @@ public class PeopleController  {
 
     @GetMapping("/new")
     public String newPerson(Model model) {
-        model.addAttribute("person", new Person(0,null));
+        model.addAttribute("person", new Person(0, null, 0, null));
         return "people/new";
     }
     @PostMapping
     public String create(Model model, HttpServletRequest request) {
         String name = request.getParameter("name");
-        Person person = new Person(0, name);
+        String email = request.getParameter("email");
+        int age = Integer.getInteger(request.getParameter("age"));
+        Person person = new Person(0, name, age, email);
         model.addAttribute("person", person);
         personDAO.save(person);
         return "redirect:/people";
@@ -67,7 +69,9 @@ public class PeopleController  {
     @PatchMapping("/{id}")
     public String update(Model model, HttpServletRequest request, @PathVariable("id") int id) {
         String name = request.getParameter("name");
-        Person person = new Person(id, name);
+        String email = request.getParameter("email");
+        int age = Integer.getInteger(request.getParameter("age"));
+        Person person = new Person(0, name, age, email);
         model.addAttribute("person", person);
         personDAO.update(id, person);
         return "redirect:/people";
