@@ -49,7 +49,7 @@ public class PeopleController  {
     public String create(Model model, HttpServletRequest request) {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        int age = Integer.getInteger(request.getParameter("age"));
+        int age = Integer.parseInt(request.getParameter("age"));
         Person person = new Person(0, name, age, email);
         model.addAttribute("person", person);
         personDAO.save(person);
@@ -70,7 +70,7 @@ public class PeopleController  {
     public String update(Model model, HttpServletRequest request, @PathVariable("id") int id) {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        int age = Integer.getInteger(request.getParameter("age"));
+        int age = Integer.parseInt(request.getParameter("age"));
         Person person = new Person(0, name, age, email);
         model.addAttribute("person", person);
         personDAO.update(id, person);

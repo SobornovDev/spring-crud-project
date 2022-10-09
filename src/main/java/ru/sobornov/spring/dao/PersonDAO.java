@@ -22,7 +22,7 @@ public class PersonDAO {
     private static final String INDEX_QUERY = "SELECT * FROM Person";
     private static final String SHOW_QUERY = "SELECT * FROM Person WHERE id=?";
     private static final String SAVE_QUERY = "INSERT INTO Person VALUES(1, ?, ?, ?)";
-    private static final String UPDATE_QUERY = "UPDATE Person SET name=?,age=? email=? WHERE id=?";
+    private static final String UPDATE_QUERY = "UPDATE Person SET name=?,age=?, email=? WHERE id=?";
     private static final String DELETE_QUERY = "DELETE FROM Person WHERE id=?";
 
 
